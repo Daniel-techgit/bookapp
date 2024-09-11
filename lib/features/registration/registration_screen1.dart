@@ -20,6 +20,7 @@ class _Registration1State extends State<Registration1> {
       child: Consumer<AuthServiceProvider>(
         builder: (context, authProvider, child) {
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: RegAndAuthAppBar,
             body: Padding(
               padding: EdgeInsets.all(20.r),
