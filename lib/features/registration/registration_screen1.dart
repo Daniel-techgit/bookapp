@@ -21,66 +21,68 @@ class _Registration1State extends State<Registration1> {
         builder: (context, authProvider, child) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: RegAndAuthAppBar,
-            body: Padding(
-              padding: EdgeInsets.all(20.r),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text('Hello! Register to get Started', style: KHeadingTextStyle),
-                    SizedBox(height: 15.h),
-                    TextFormField(
-                      autofocus: false,
-                      controller: authProvider.firstNameController,
-                      validator: authProvider.validateFirstName,
-                      decoration: buildInputDecoration("Enter First Name", Icons.person),
-                    ),
-                    SizedBox(height: 10.h),
-                    TextFormField(
-                      autofocus: false,
-                      controller: authProvider.lastNameController,
-                      validator: authProvider.validateLastName,
-                      decoration: buildInputDecoration("Enter Last Name", Icons.person),
-                    ),
-                    SizedBox(height: 10.h),
-                    TextFormField(
-                      autofocus: false,
-                      controller: authProvider.emailController,
-                      validator: authProvider.validateEmail,
-                      decoration: buildInputDecoration("Enter Email", Icons.email),
-                    ),
-                    SizedBox(height: 80.h),
-                    MyTextButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          Navigator.pushNamed(
+
+            body: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.all(20.r),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text('Hello! Register to get Started', style: KHeadingTextStyle),
+                      SizedBox(height: 15.h),
+                      TextFormField(
+                        autofocus: false,
+                        controller: authProvider.firstNameController,
+                        validator: authProvider.validateFirstName,
+                        decoration: buildInputDecoration("Enter First Name", Icons.person),
+                      ),
+                      SizedBox(height: 10.h),
+                      TextFormField(
+                        autofocus: false,
+                        controller: authProvider.lastNameController,
+                        validator: authProvider.validateLastName,
+                        decoration: buildInputDecoration("Enter Last Name", Icons.person),
+                      ),
+                      SizedBox(height: 10.h),
+                      TextFormField(
+                        autofocus: false,
+                        controller: authProvider.emailController,
+                        validator: authProvider.validateEmail,
+                        decoration: buildInputDecoration("Enter Email", Icons.email),
+                      ),
+                      SizedBox(height: 80.h),
+                      MyTextButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.pushNamed(
+                              context,
+                              '/registration2',
+                              arguments: {
+                                'firstName': authProvider.firstNameController.text,
+                                'lastName': authProvider.lastNameController.text,
+                                'email': authProvider.emailController.text,
+                                'authProvider': authProvider,
+                              },
+                            );
+                          }
+                        },
+                        buttonText: 'Continue',
+                      ),
+                      const Spacer(),
+                      BottomActionText(
+                        question: 'Already have an account?',
+                        action: 'Login',
+                        onTap: () {
+                          Navigator.push(
                             context,
-                            '/registration2',
-                            arguments: {
-                              'firstName': authProvider.firstNameController.text,
-                              'lastName': authProvider.lastNameController.text,
-                              'email': authProvider.emailController.text,
-                              'authProvider': authProvider,
-                            },
+                            MaterialPageRoute(builder: (context) => const Login()),
                           );
-                        }
-                      },
-                      buttonText: 'Continue',
-                    ),
-                    const Spacer(),
-                    BottomActionText(
-                      question: 'Already have an account?',
-                      action: 'Login',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Login()),
-                        );
-                      },
-                    )
-                  ],
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

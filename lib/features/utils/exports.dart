@@ -78,4 +78,6 @@ export 'package:price_app/features/providers/library_provider.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:flutter/services.dart'; // For SystemNavigator
 export 'package:flutter_email_sender/flutter_email_sender.dart';
+export 'package:url_launcher/url_launcher.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

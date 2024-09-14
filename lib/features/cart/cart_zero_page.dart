@@ -313,12 +313,7 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const PaymentScreen(),
-            ),
-          );
+          Navigator.pushNamed(context, '/payment_screen');
         },
       ),
     );

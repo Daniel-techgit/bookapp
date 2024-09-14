@@ -74,9 +74,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         await cartProvider.clearCart();
 
         // Navigate to LibraryPage
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const LibraryPage()),
-        );
+        Navigator.pushNamed(context, '/library');
 
         // Add books to library in the background
         _addBooksToLibraryInBackground(cartBooks);
@@ -198,24 +196,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         );
                       },
                     ),
-                    // ElevatedButton(
-                    //   child: const Text('Make Payment'),
-                    //   onPressed: () {
-                    //     _handlePayment(
-                    //       context,
-                    //       cartProvider.calculateTotal(),
-                    //       user,
-                    //       cartBooks,
-                    //     );
-                    //   },
-                    // ),
+
                   ],
                 ),
               ),
-              bottomNavigationBar: CustomBottomNavigationBar(
-                currentIndex: _currentIndex,
-                onTap: _onItemTapped,
-              ),
+
             );
           },
         );
@@ -224,66 +209,3 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 }
 
-// class PaymentScreen extends StatefulWidget {
-//   @override
-//   State<PaymentScreen> createState() => _PaymentScreenState();
-// }
-//
-// class _PaymentScreenState extends State<PaymentScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Consumer<CartProvider>(
-//       builder: (context, cartProvider, child) {
-//         return Scaffold(
-//           backgroundColor: const Color(0xFFDFDFDF),
-//           appBar: const CartAppBar(customTitle: "Confirm your order"),
-//           body: Container(
-//             color: Colors.white,
-//             width: double.infinity,
-//             padding: EdgeInsets.all(30.w),
-//             margin: EdgeInsets.only(top: 5.h),
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Text(
-//                   'How would you like to pay?',
-//                   style: TextStyle(
-//                     fontSize: 15.sp,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//                 SizedBox(height: 8.h),
-//                 Text(
-//                   ' Choose the most suitable payment method \n for you.',
-//                   style: TextStyle(
-//                     fontSize: 15.sp,
-//                   ),
-//                 ),
-//                 SizedBox(height: 20.h),
-//                 PaymentRadioButton(),
-//                 Spacer(),
-//                 Container(
-//                   alignment: Alignment.center,
-//                   child: Text(
-//                     'By continuing, you agree to our privacy policy and terms of use.',
-//                     style: TextStyle(
-//                       fontSize: 10.sp,
-//                       fontStyle: FontStyle.italic,
-//                     ),
-//                   ),
-//                 ),
-//                 SizedBox(height: 20.h),
-//                 CustomCartButtonTwoA(
-//                   child: 'Make Payment (N${cartProvider.calculateTotal().toStringAsFixed(2)})',
-//                   onPressed: () {
-//                     // Implement payment logic here
-//                   },
-//                 )
-//               ],
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }

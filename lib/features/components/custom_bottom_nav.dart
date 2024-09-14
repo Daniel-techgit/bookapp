@@ -1,16 +1,14 @@
 import 'package:price_app/features/utils/exports.dart';
 
-
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
-  const CustomBottomNavigationBar({super.key, 
+  const CustomBottomNavigationBar({
+    super.key,
     required this.currentIndex,
     required this.onTap,
   });
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +34,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
           label: 'Library',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
+          icon: Icon(Icons.support_agent),  // New item for Customer Support
+          label: 'Support',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.logout),
+          label: 'logout',
         ),
       ],
     );
